@@ -1,0 +1,17 @@
+apply plugin: 'scala'
+
+repositories{
+    mavenCentral()
+    mavenLocal()
+}
+dependencies {
+compile("org.scala-lang:scala-library:2.11.2")
+ compile 'org.slf4j:slf4j-api:1.7.5'
+    testCompile("junit:junit")
+    compile("org.springframework.boot:spring-boot-starter-web:1.1.6.RELEASE")
+}
+task run(type: JavaExec, dependsOn: classes) {
+    main = 'hello.SampleController'
+    classpath sourceSets.main.runtimeClasspath
+    classpath configurations.runtime
+}
